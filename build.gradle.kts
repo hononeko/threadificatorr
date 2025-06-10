@@ -6,10 +6,11 @@ plugins {
     kotlin("jvm") version "2.1.10"
     id("io.ktor.plugin") version "3.1.3"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.10"
+    id("com.figure.gradle.semver-plugin") version "1.10.0"
 }
 
 group = "app.hononeko"
-version = "0.0.1"
+version = semver.version
 
 application {
     mainClass = "io.ktor.server.netty.EngineMain"
@@ -42,4 +43,10 @@ dependencies {
     implementation("io.ktor:ktor-server-config-yaml")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+}
+
+semver {
+    initialVersion("0.1.0")
+    versionModifier { nextMinor() }
+    tagPrefix("")
 }
