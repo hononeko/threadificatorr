@@ -1,0 +1,36 @@
+name: Tag Version
+
+env:
+  JAVA_VERSION: 21
+
+on:
+  workflow_run:
+    workflows: [ CI Build ]
+    types: [ completed ]
+    branches: [ main ]
+
+permissions:
+  contents: read
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
+      - name: Set up JDK ${{env.JAVA_VERSION}}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{env.JAVA_VERSION}}
+          distribution: 'zulu'
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v4
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Make Gradle executable
+        run: chmod +x gradlew
+      - name: Print current version
+        run: ./gradlew currentSemver
+      - name: Create and push tag
+        run: ./gradlew createAndPushVersionTag
