@@ -41,6 +41,13 @@ dependencies {
     implementation("io.ktor:ktor-server-netty")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml")
+    implementation(platform("io.arrow-kt:arrow-stack:2.1.0"))
+    implementation("io.arrow-kt:arrow-core")
+    implementation("io.arrow-kt:arrow-fx-coroutines")
+    // logging
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.7")
+    implementation("org.slf4j:slf4j-api:2.0.16")
+    implementation("ch.qos.logback:logback-classic:1.5.18")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
