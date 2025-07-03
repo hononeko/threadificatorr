@@ -1,6 +1,7 @@
 val koin_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
+val kotest_version: String by project
 
 plugins {
     kotlin("jvm") version "2.2.0"
@@ -44,16 +45,24 @@ dependencies {
     implementation(platform("io.arrow-kt:arrow-stack:2.1.0"))
     implementation("io.arrow-kt:arrow-core")
     implementation("io.arrow-kt:arrow-fx-coroutines")
+    implementation ("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-client-cio")
     // logging
     implementation("io.github.oshai:kotlin-logging-jvm:7.0.7")
     implementation("org.slf4j:slf4j-api:2.0.16")
     implementation("ch.qos.logback:logback-classic:1.5.18")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("io.kotest:kotest-assertions-core:$kotest_version")
+    testImplementation("io.kotest:kotest-property:$kotest_version")
 }
 
 semver {
     initialVersion("0.1.0")
     versionModifier { nextMinor() }
     tagPrefix("")
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }

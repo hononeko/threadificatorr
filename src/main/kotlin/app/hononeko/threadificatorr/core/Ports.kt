@@ -15,12 +15,12 @@ interface ThreadRepository {
     /**
      * Adds a new media ID - thread ID mapping to the known threads
      */
-    fun add(notification: UnifiedNotification)
+    suspend fun add(notification: UnifiedNotification)
 
     /**
      * Returns the message Thread ID if it exists
      */
-    fun get(mediaIdentifier: String): String?
+    suspend fun get(mediaIdentifier: String): String?
 }
 
 /**
