@@ -1,6 +1,10 @@
 package app.hononeko.app.hononeko.threadificatorr.core
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class UnifiedNotification(
-    val mediaIdentifier: String,
+    val mediaId: String,
+    val mediaName: String,
     val notificationText: String,
 )

@@ -30,7 +30,7 @@ dependencies {
     implementation("com.ucasoft.ktor:ktor-simple-cache:0.53.4")
     implementation("com.ucasoft.ktor:ktor-simple-redis-cache:0.53.4")
     implementation("io.ktor:ktor-server-swagger")
-    implementation("io.ktor:ktor-server-csrf")
+    
     implementation("io.ktor:ktor-server-request-validation")
     implementation("io.ktor:ktor-server-call-logging")
     implementation("dev.hayden:khealth:3.0.2")
@@ -45,16 +45,22 @@ dependencies {
     implementation(platform("io.arrow-kt:arrow-stack:2.1.0"))
     implementation("io.arrow-kt:arrow-core")
     implementation("io.arrow-kt:arrow-fx-coroutines")
-    implementation ("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-client-core")
     implementation("io.ktor:ktor-client-cio")
+    implementation("io.ktor:ktor-client-content-negotiation")
     // logging
     implementation("io.github.oshai:kotlin-logging-jvm:7.0.7")
     implementation("org.slf4j:slf4j-api:2.0.16")
     implementation("ch.qos.logback:logback-classic:1.5.18")
+    implementation("io.ktor:ktor-client-logging:3.0.0-beta-1")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("io.kotest:kotest-assertions-core:$kotest_version")
     testImplementation("io.kotest:kotest-property:$kotest_version")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotest_version")
+    testImplementation("org.testcontainers:testcontainers:1.19.8")
+    testImplementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.1")
+    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.1")
 }
 
 semver {

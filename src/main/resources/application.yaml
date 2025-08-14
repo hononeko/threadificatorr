@@ -4,3 +4,8 @@ ktor:
       - app.hononeko.ApplicationKt.module
   deployment:
     port: 8080
+
+meilisearch:
+  host: "http://localhost:7700"
+  apiKey: "masterKey"
+  indexName: "threadificatorr"
